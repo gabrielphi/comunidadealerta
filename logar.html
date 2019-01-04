@@ -1,0 +1,161 @@
+<!Doctype html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <!-- BIBLIOTECA DE FUNÇÕES DEFINIDAS EM JAVASCRIPT -->
+    <script src="js/jquery-3.3.1.min.js"></script>
+    <script src="bootstrap-4.0.0/js/bootstrap.min.js"></script>
+
+    <!-- Biblioteca para utilização de ícones -->
+    <!-- https://fontawesome.com/v4.7.0/icons/  Lista de ícones -->
+    <link href="font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet">
+
+    <!-- CHAMADA DOS ESTILOS CSS bootstrap e estilo próprio -->
+    <link rel="stylesheet" href="bootstrap-4.0.0/css/bootstrap.css">
+    <link rel="stylesheet" href="css/estilo.css" > <!--type = "text"pasta js -->
+
+    <!-- Mascara para cpf, cep, monetário -->
+    <script src="js/maskedinput.min.js"></script>
+    <script type="text/javascript" src="js/priceformat.js"></script>
+    <script type="text/javascript">
+
+        $(document).ready(function() {
+
+            $('.mascaraReal').priceFormat({
+                prefix: '',
+                centsSeparator: ',',
+                thousandsSeparator: '.'
+            });
+
+            $('.inteiro').priceFormat({
+                centsLimit:0,
+                prefix: '',
+                centsSeparator: '',
+                thousandsSeparator: ''
+            });
+
+        });
+
+        $(document).ready(function(){
+            $(".mascaraData").mask("99/99/9999"); // 00/00/000 ----- os números inseridos representam o máximo aceito;
+            $(".mascaraTelefone").mask("(99) 99999-9999");
+            $(".mascaraCep").mask("99999-999");
+            $(".mascaraCpf").mask("999.999.999-99");
+        });
+
+    </script>
+
+
+    <!-- DEFINIÇÃO DO ÍCONE E TÍTULO DA ABA DO NAVEGADOR -->
+    <link rel="shortcut icon" type="imagens/png" href="img/favicon.png"/>
+    <title>Meu Novo Site</title>
+
+    <!-- Identificação do autor da página, pode ser a empresa também -->
+    <meta name="author" content="Nome do autor">
+
+    <!-- Uma breve descrição do seu site para os buscadores encontrarem seu site -->
+    <meta name="description" content="Definição de um template para construção de um sistema qualquer">
+
+    <!-- Palavras chave que definem o seu sistema. É comum utilizar até 5 palavras -->
+    <meta name="keywords" content="sites, web, meta tag, código, html">
+
+    <script>
+        function salvarDados() { // fun salvar();
+            //Resgatar os campos
+            //"none"
+            var campoLogin = document.getElementById("login");
+            var campoSenha = document.getElementById("senha");
+
+            var login = campoLogin.value;
+            var senha = campoSenha.value;
+
+            debugger;
+            $.ajax({
+                type: "POST",
+                url: "logar.php",
+                data: {
+                    email: login,
+                    senha: senha
+                },
+                success: function (text) {
+                    if (text == "success") {
+                        window.location.replace("projeto_escoteiro/index.php");
+                    } else {
+                        alertaErro("e-mail ou senha incorretos!");
+                    }
+                },
+                error: function (){
+                    alertaErro('Deu PT!');
+                }
+
+            });
+        }
+
+
+        function alertaErro(msg) {
+            $("#alerta_erro .texto").html(msg);
+            $("#alerta_erro").slideDown(400).delay(2500).slideUp(400);
+        }
+
+        function alertaSucesso(msg) {
+            $("#alerta_sucesso .texto").html(msg);
+            $("#alerta_sucesso").slideDown(400).delay(2500).slideUp(400);
+        }
+
+        function alertaAviso(msg) {
+            $("#alerta_aviso .texto").html(msg);
+            $("#alerta_aviso").slideDown(400);
+        }
+    </script>
+</head>
+<body>
+<div class="container">
+    <div id="menu" >
+        <nav id="nav nav-pills nav-fill">
+            <a class="nav-item nav-link active" href="#"><i class="fa fa-home"></i> Início</a>
+            <a class="nav-item nav-link" href="#">A Empresa</a>
+            <a class="nav-item nav-link" href="#">Produto</a>
+            <a class="nav-item nav-link" href="#">Cadastro de Usuário</a>
+        </nav>
+    </div>
+
+    <div class="container-fluid" id="conteudo">
+        <div class="formulario">
+            <h4><i class="fa fa-user"></i> Login</h4>
+            <label>Login</label>
+            <input type="text" class="form-control" id="login" >
+            <hr>
+
+            <label>Senha</label>
+            <input type="password" class="form-control" id="senha" >
+            <hr>
+
+            <button class="btn btn-dark" onclick="salvarDados()">
+                <i class="fa fa-thumbs-o-up" aria-hidden="true"></i> Enviar
+            </button>
+            <a href="">Voltar</a>
+        </div>
+
+    </div>
+</div>
+
+
+<!-- DEFINIÇÃO DAS CAIXAS DE MENSAGEM -->
+<div id="alerta_sucesso" class="alert alert-success msg">
+    <span class="texto">Alerta de sucesso!</span>
+</div>
+
+
+<div id="alerta_erro" class="alert alert-danger msg">
+    <span class="texto">Alerta de erro!</span>
+</div>
+
+
+<div id="alerta_aviso" class="alert alert-warning msg">
+    <span class="texto">Este alert possui botão de fechar!</span>
+    <button type="button" class="close" data-dismiss="alert">
+        <span>&times;</span>
+    </button>
+</div>
+</body>
+</html>

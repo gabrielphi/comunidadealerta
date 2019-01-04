@@ -1,0 +1,92 @@
+*{
+	margin:0;
+	padding:0;
+}
+body{
+	font-family: 'Arial', sans-serif;
+	font-size:14px;
+}
+.container{
+	width:1050px;
+	margin:0 auto;
+}
+.primeiro{
+	margin-left:0 !important;
+}
+.ultimo{
+	margin-right: 0 !important;
+}
+#cabecalho{
+	height:90px;
+	border-top: 2px solid #133155;
+}
+#cabecalho #logo{
+	width:50%;
+	float:left;
+	margin-top: 25px;
+}
+#cabecalho #logo h1{
+	color:red;
+	font-size:34px;
+}
+#cabecalho #contatos{
+	width:50%;
+	float:right;
+	margin-top: 2px;
+	text-align:right;
+	
+}
+#menu{
+	background-color: #133155;
+	padding:20px 0px;
+}
+#menu ul li{
+	list-style: none;
+	display: inline;
+	margin-right: 40px;
+	margin-left: 40px;
+}
+#menu ul li a{
+	color:#FFFFFF;
+	font-size: 16px;
+	font-weight: bold;
+	text-decoration: none;
+}
+#menu ul li a:hover{
+	color:#FFFFFF;
+	font-size: 16px;
+	font-weight: bold;
+	text-decoration: underline;
+}
+#menu #logar{
+	text-decoration: none;
+	text-align: right;
+	float:right;
+	color:#FFFFFF;
+	font-size:16px;
+	font-weight: bold;
+	margin-left:20px;
+}
+#menu #logar:hover{
+	text-decoration: underline;
+	text-align: right;
+	float:right;
+	color:#FFFFFF;
+	font-size:16px;
+	font-weight: bold;
+	margin-left:20px;
+}
+
+#formulario #nome, #email, #senha label{
+	color:black;
+	font-weight: bold;
+}
+#formulario #nome, #email, #senha{
+	float:center;
+	text-align: center;
+	margin-top: 10px;
+}
+.clear{
+    clear: both;   
+}
+}

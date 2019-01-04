@@ -1,0 +1,3 @@
+Coloque as alterações feitas aqui:
+
+- Criado index.php com função de ser nada

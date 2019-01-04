@@ -1,0 +1,20 @@
+#formulario{
+	width: 40%;
+	border: 1px solid #CCC;
+	border-radius: 5px;
+	background-color: #F9F9F9;
+	margin: auto;
+	margin-top: 20px;
+	padding: 25px;
+}
+
+.numero { text-align: right;}
+
+.msg {
+	text-align: center;
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	display: none;
+}
